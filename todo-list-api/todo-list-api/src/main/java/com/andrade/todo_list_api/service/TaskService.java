@@ -7,6 +7,7 @@ import com.andrade.todo_list_api.entity.User;
 import com.andrade.todo_list_api.enums.Status;
 import com.andrade.todo_list_api.repository.TaskRepository;
 import com.andrade.todo_list_api.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,15 +18,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class TaskService {
 
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
-
-    public TaskService(TaskRepository taskRepository, UserRepository userRepository) {
-        this.taskRepository = taskRepository;
-        this.userRepository = userRepository;
-    }
 
     private LocalDateTime parseDueDate(String s) {
         if (s == null) return null;

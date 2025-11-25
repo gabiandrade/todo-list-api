@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
-
+            // select * from task where ownerId = 1;
     List<Task> findByOwnerId(Long ownerId);
 
     List<Task> findByParticipantsId(Long participantsId);

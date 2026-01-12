@@ -1,4 +1,4 @@
-package com.andrade.todo_list_api.entity;
+package com.andrade.todo_list_api.domain;
 
 import com.andrade.todo_list_api.enums.Status;
 import jakarta.persistence.*;

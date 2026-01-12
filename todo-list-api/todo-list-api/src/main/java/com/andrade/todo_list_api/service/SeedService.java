@@ -1,10 +1,13 @@
 package com.andrade.todo_list_api.service;
 
+import com.andrade.todo_list_api.domain.Employee;
+import com.andrade.todo_list_api.domain.Task;
+import com.andrade.todo_list_api.domain.User;
+import com.andrade.todo_list_api.dto.external.EmployeeListResponse;
 import com.andrade.todo_list_api.dto.external.TodoListResponse;
 import com.andrade.todo_list_api.dto.external.UserListResponse;
-import com.andrade.todo_list_api.entity.Task;
-import com.andrade.todo_list_api.entity.User;
 import com.andrade.todo_list_api.enums.Status;
+import com.andrade.todo_list_api.repository.EmployeeRepository;
 import com.andrade.todo_list_api.repository.TaskRepository;
 import com.andrade.todo_list_api.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
@@ -20,8 +23,9 @@ import java.util.stream.Collectors;
 public class SeedService {
 
     private final WebClient webClient;
-    private final UserRepository userRepo;
-    private final TaskRepository taskRepo;
+    private final UserRepository userRepository;
+    private final TaskRepository taskRepository;
+    private final EmployeeRepository employeeRepository;
 
 
     @PostConstruct
@@ -43,7 +47,7 @@ public class SeedService {
                     user.setEmail(u.getEmail());
                     return user;
                 }).collect(Collectors.toList());
-                userRepo.saveAll(list);
+                userRepository.saveAll(list);
             }
 
             // fetch todos and convert to tasks (basic mapping)
@@ -61,13 +65,41 @@ public class SeedService {
                     task.setStatus(t.isCompleted() ? Status.DONE : Status.TODO);
                     task.setPublic(false);
                     // try to set owner if user exists
-                    userRepo.findById(t.getUserId()).ifPresent(task::setOwner);
+                    userRepository.findById(t.getUserId()).ifPresent(task::setOwner);
                     return task;
                 }).collect(Collectors.toList());
-                taskRepo.saveAll(tasks);
+                taskRepository.saveAll(tasks);
             }
         } catch (Exception ex) {
             System.out.println("Seed error: " + ex.getMessage());
+        }
+    }
+
+    @PostConstruct
+    public void seedEmployees() {
+        try {
+            EmployeeListResponse employeeListResponse = webClient.get()
+                    .uri("/users")
+                    .retrieve()
+                    .bodyToMono(EmployeeListResponse.class)
+                    .block();
+
+            if (employeeListResponse != null && employeeListResponse.getUsers() != null) {
+                List<Employee> employees = employeeListResponse.getUsers().stream().map(
+                        e -> {
+                            Employee employee = new Employee();
+                            employee.setId(e.getId());
+                            employee.setName(e.getFirstName());
+                            employee.setEmail(e.getEmail());
+                            return employee;
+                        }).toList();
+
+                employeeRepository.saveAll(employees);
+                employees.forEach(System.out::println);
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Seed Employee error: " + ex.getMessage());
         }
     }
 }

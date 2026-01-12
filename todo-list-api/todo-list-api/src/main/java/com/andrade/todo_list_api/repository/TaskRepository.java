@@ -1,6 +1,6 @@
 package com.andrade.todo_list_api.repository;
 
-import com.andrade.todo_list_api.entity.Task;
+import com.andrade.todo_list_api.domain.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

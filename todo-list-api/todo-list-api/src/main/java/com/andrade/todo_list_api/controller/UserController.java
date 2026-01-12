@@ -1,6 +1,6 @@
 package com.andrade.todo_list_api.controller;
 
-import com.andrade.todo_list_api.entity.User;
+import com.andrade.todo_list_api.domain.User;
 import com.andrade.todo_list_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

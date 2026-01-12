@@ -1,4 +1,4 @@
-package com.andrade.todo_list_api.entity;
+package com.andrade.todo_list_api.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

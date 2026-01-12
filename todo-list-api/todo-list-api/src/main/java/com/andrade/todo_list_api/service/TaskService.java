@@ -2,8 +2,8 @@ package com.andrade.todo_list_api.service;
 
 import com.andrade.todo_list_api.dto.TaskDTO;
 import com.andrade.todo_list_api.dto.TaskResponse;
-import com.andrade.todo_list_api.entity.Task;
-import com.andrade.todo_list_api.entity.User;
+import com.andrade.todo_list_api.domain.Task;
+import com.andrade.todo_list_api.domain.User;
 import com.andrade.todo_list_api.enums.Status;
 import com.andrade.todo_list_api.repository.TaskRepository;
 import com.andrade.todo_list_api.repository.UserRepository;

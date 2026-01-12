@@ -1,5 +1,6 @@
 package com.andrade.todo_list_api.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class Action {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "responsible")
+    @JoinColumn(name = "responsible_id")
     private Employee responsible;
 
     private LocalDate startDate;
@@ -36,5 +37,6 @@ public class Action {
     private Set<Employee> participants = new HashSet<>();
 
     @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Phase> phases = new ArrayList<>();
 }

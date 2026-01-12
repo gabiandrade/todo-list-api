@@ -95,7 +95,6 @@ public class SeedService {
                         }).toList();
 
                 employeeRepository.saveAll(employees);
-                employees.forEach(System.out::println);
             }
 
         } catch (Exception ex) {

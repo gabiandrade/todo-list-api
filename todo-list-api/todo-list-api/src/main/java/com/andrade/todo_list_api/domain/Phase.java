@@ -1,5 +1,6 @@
 package com.andrade.todo_list_api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,12 +23,12 @@ public class Phase {
 
     private String phaseName;
     @ManyToOne
-    @JoinColumn(name = "responsible")
+    @JoinColumn(name = "responsible_id")
     private Employee responsible;
 
     private LocalDate startDate;
     private LocalDate plannedEndDate;
-    private LocalDate effectiveDate;
+    private LocalDate effectiveEndDate;
 
     private BigDecimal cost = BigDecimal.ZERO;
 
@@ -41,5 +42,6 @@ public class Phase {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "action_id")
+    @JsonBackReference
     private Action action;
 }

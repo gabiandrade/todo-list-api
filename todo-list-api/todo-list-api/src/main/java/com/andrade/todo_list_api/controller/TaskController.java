@@ -1,8 +1,8 @@
 package com.andrade.todo_list_api.controller;
 
-import com.andrade.todo_list_api.dto.ShareRequest;
-import com.andrade.todo_list_api.dto.TaskDTO;
-import com.andrade.todo_list_api.dto.TaskResponse;
+import com.andrade.todo_list_api.domain.dto.request.ShareRequest;
+import com.andrade.todo_list_api.domain.dto.TaskDTO;
+import com.andrade.todo_list_api.domain.dto.response.TaskResponse;
 import com.andrade.todo_list_api.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

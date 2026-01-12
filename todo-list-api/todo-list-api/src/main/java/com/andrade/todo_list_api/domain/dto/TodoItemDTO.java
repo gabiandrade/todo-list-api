@@ -1,4 +1,4 @@
-package com.andrade.todo_list_api.dto;
+package com.andrade.todo_list_api.domain.dto;
 
 import lombok.Data;
 

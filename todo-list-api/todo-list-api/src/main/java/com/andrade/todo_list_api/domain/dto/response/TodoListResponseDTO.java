@@ -1,5 +1,6 @@
-package com.andrade.todo_list_api.dto;
+package com.andrade.todo_list_api.domain.dto.response;
 
+import com.andrade.todo_list_api.domain.dto.TodoItemDTO;
 import lombok.Data;
 
 import java.util.List;

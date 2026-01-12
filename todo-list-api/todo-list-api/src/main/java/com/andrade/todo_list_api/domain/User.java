@@ -11,7 +11,8 @@ import lombok.Data;
 public class User {
 
     @Id
-    private Long id; //// mantemos o id do DummyJSON para facilitar o seed
+    private Long id;
+    /// / mantemos o id do DummyJSON para facilitar o seed
     private String firstName;
     private String lastName;
     private String email;

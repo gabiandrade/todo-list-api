@@ -1,7 +1,7 @@
 package com.andrade.todo_list_api.service;
 
-import com.andrade.todo_list_api.dto.TodoItemDTO;
-import com.andrade.todo_list_api.dto.TodoListResponseDTO;
+import com.andrade.todo_list_api.domain.dto.TodoItemDTO;
+import com.andrade.todo_list_api.domain.dto.response.TodoListResponseDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 

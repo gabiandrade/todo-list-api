@@ -8,6 +8,9 @@ class TodoListApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// ARRANGE
+		// ACT
+		// ASSERT
 	}
 
 }
